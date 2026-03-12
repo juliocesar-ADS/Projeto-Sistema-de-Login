@@ -7,9 +7,12 @@ app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'JHONATANEBAC'
 
+
 @app.route("/")
 def home():
     return render_template("login.html")
+
+
 @app.route("/login", methods=['POST'])
 def login():
 
@@ -26,10 +29,11 @@ def login():
 
             if user['nome'] == nome and user['senha'] == senha:
                 return render_template('usuarios.html')
-            
+
             if cont >= len(users):
                 flash('Usuario Inválido')
                 return redirect('/')
-            
+
+
 if __name__ == "__main__":
     app.run(debug=True)
